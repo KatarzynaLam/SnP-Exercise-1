@@ -20,6 +20,20 @@ namespace SnP_Exercise_1.Services
             }
         };
 
+        public UsersCollection GetUsersByFirstName(string name)
+        {
+            UsersCollection UsersByName = new UsersCollection { };
+            UsersByName.Users = Users.Users.Where(user => user.FirstName == name).ToList();
+            return UsersByName;
+        }
+
+        public UsersCollection GetUsersByLastName(string name)
+        {
+            UsersCollection UsersByName = new UsersCollection { };
+            UsersByName.Users = Users.Users.Where(user => user.LastName == name).ToList();
+            return UsersByName;
+        }
+
         public UsersCollection GetUsersByName(string name)
         {
             UsersCollection UsersByName = new UsersCollection { };

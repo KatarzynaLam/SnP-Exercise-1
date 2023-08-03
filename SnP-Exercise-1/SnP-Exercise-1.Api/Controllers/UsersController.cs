@@ -41,12 +41,28 @@ namespace SnP_Exercise_1.Api.Controllers
             return MapToUsersDTO(_userService.GetUsersByOccupation(occupation));
         }
 
+        [Route("lastname/{lastname}")]
+        [HttpGet]
+        public UsersCollection GetUsersByLastName(string lastname)
+        {
+            return MapToUsersDTO(_userService.GetUsersByLastName(lastname));
+        }
+
+        [Route("firstname/{firstname}")]
+        [HttpGet]
+        public UsersCollection GetUsersByFirstName(string firstname)
+        {
+            return MapToUsersDTO(_userService.GetUsersByFirstName(firstname));
+        }
+
+
         [Route("age/{age}")]
         [HttpGet]
         public UsersCollection GetUsersByAge(int age)
         {
             return MapToUsersDTO(_userService.GetUsersByAge(age));
         }
+
 
         private User MapToUserDTO(SnP_Exercise_1.Services.User user)
         {
