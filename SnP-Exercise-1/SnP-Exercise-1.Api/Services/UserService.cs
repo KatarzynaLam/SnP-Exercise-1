@@ -22,38 +22,38 @@ namespace SnP_Exercise_1.Services
 
         public UsersCollection GetUsersByFirstName(string name)
         {
-            UsersCollection UsersByName = new UsersCollection { };
-            UsersByName.Users = Users.Users.Where(user => user.FirstName == name).ToList();
-            return UsersByName;
+            return new UsersCollection{
+                Users = Users.Users.Where(user => user.FirstName == name).ToList()
+        };
         }
 
         public UsersCollection GetUsersByLastName(string name)
         {
-            UsersCollection UsersByName = new UsersCollection { };
-            UsersByName.Users = Users.Users.Where(user => user.LastName == name).ToList();
-            return UsersByName;
+            return new UsersCollection {
+                Users = Users.Users.Where(user => user.LastName == name).ToList()
+            };
         }
 
         public UsersCollection GetUsersByName(string name)
         {
-            UsersCollection UsersByName = new UsersCollection { };
-            UsersByName.Users = Users.Users.Where(user => (user.FirstName + ' ' + user.LastName) == name).ToList();
-            return UsersByName;
+            return new UsersCollection {
+                Users = Users.Users.Where(user => (user.FirstName + ' ' + user.LastName) == name).ToList()
+        };
         }
 
         public UsersCollection GetUsersByOccupation(string occupation)
         {
-            UsersCollection OccupationUsers = new UsersCollection { Users = new List<User>() };
-            OccupationUsers.Users = Users.Users.Where(user => (user.Occupation.GetDisplayName() == occupation)).ToList();
-            return OccupationUsers;
-        }
-        public UsersCollection GetUsersByAge(int age)
-        {
-            UsersCollection UsersByAge = new UsersCollection { Users = new List<User>() };
-            UsersByAge.Users = Users.Users.Where(user => (user.Age == age)).ToList();
-            return UsersByAge;
+            return new UsersCollection {
+                Users = Users.Users.Where(user => (user.Occupation.GetDisplayName() == occupation)).ToList()
+            };
         }
 
+        public UsersCollection GetUsersByAge(int age)
+        {
+            return new UsersCollection{
+                Users = Users.Users.Where(user => (user.Age == age)).ToList()
+            };
+        }
         public UsersCollection GetActiveUsers()
         {
             UsersCollection ActiveUsers = new UsersCollection {Users = new List<User>() };
