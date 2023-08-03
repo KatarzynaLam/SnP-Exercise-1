@@ -6,4 +6,8 @@
        public string? Occupation { get; set; }
        public bool Active { get; set; }
     }
+    public class UsersCollection
+    {
+        public User?[] Users { get; set; }
+    }
 }
