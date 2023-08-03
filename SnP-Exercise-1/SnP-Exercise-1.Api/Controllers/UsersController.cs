@@ -44,7 +44,7 @@ namespace SnP_Exercise_1.Api.Controllers
             return new User
             {
                 Name = user.FirstName + ' ' + user.LastName,
-                Occupation = user.Occupation.ToString(),
+                Occupation = user.Occupation.GetDisplayName(),
                 Active = user.Active
             };
         }

@@ -26,7 +26,7 @@ namespace SnP_Exercise_1.Services
             usersByName.Users = Users.Users.Where(user => (user.FirstName == FirstName) && user.LastName == LastName).ToList();
             return usersByName;
         }
-      
+
         //public UsersCollection GetUsersByOccupation(Occupation occupation)
         //{
 
