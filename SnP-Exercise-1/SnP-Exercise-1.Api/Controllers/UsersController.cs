@@ -5,7 +5,7 @@ using System;
 namespace SnP_Exercise_1.Api.Controllers
 {
     [ApiController]
-    [Route("v1/[controller]")]
+    [Route("v1/users")]
     public class UsersController : ControllerBase
     {
         private UserService? _userService;
@@ -13,11 +13,20 @@ namespace SnP_Exercise_1.Api.Controllers
         {
             _userService = userService;
         }
-        [HttpGet(Name = "GetUsers")]
-        public UsersCollection Get()
+        [Route("")]
+        [HttpGet]
+        public UsersCollection GetUsers()
         {
             return MapToUsersDTO(_userService.GetAllUsers());
         }
+
+        [Route("active")]
+        [HttpGet]
+        public UsersCollection GetActive()
+        {
+            return MapToUsersDTO(_userService.GetActiveUsers());
+        }
+
         private User MapToUserDTO(SnP_Exercise_1.Services.User user)
         {
             return new User
@@ -30,22 +39,14 @@ namespace SnP_Exercise_1.Api.Controllers
 
         private UsersCollection MapToUsersDTO(SnP_Exercise_1.Services.UsersCollection users)
         {
-
-            return new UsersCollection
+            UsersCollection usersCollection = new UsersCollection { Users = new List<User>() };
+            foreach(SnP_Exercise_1.Services.User u in users.Users)
             {
-                Users = new User[]{ 
-                    MapToUserDTO(users.Users[0]),
-                    MapToUserDTO(users.Users[1]),
-                    MapToUserDTO(users.Users[2]),
-                }
-            };
-               
-        
+                usersCollection.Users.Add(MapToUserDTO(u));
+            }
+            return usersCollection;
+
         }
-
-
-
-
-}
+    }
 
 }

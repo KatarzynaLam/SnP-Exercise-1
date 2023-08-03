@@ -1,39 +1,36 @@
-﻿using SnP_Exercise_1.Api;
+﻿
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
+using System.ComponentModel;
 
 namespace SnP_Exercise_1.Services
 {
-    public enum Occupation
-    {
-        CEO,
-        Scientist,
-        MusicComposer,
-    }
 
-    public class User
-    {
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public Occupation Occupation { get; set; }
-        public bool Active { get; set; }
-        public int? Age { get; set; }
-    }
-    public class UsersCollection
-    {
-        public User?[] Users { get; set; }
-    }
     public class UserService
     {
         private static readonly UsersCollection Users = new UsersCollection
         {
-            Users = new User[]
+            Users = new List<User>
             {
-                new User { FirstName = "Bill", LastName="Gates", Occupation = Occupation.CEO, Active = true },
-                new User { FirstName = "Issac Newton", LastName="Newton", Occupation = Occupation.Scientist, Active = false },
-                new User { FirstName = "Kyd", LastName="Kyd", Occupation = Occupation.MusicComposer, Active = true }
+                new User { FirstName = "Bill", LastName="Gates", Occupation = Occupation.CEO, Active = true, Age = 100 },
+                new User { FirstName = "Issac", LastName="Newton", Occupation = Occupation.Scientist, Active = false, Age = 10 },
+                new User { FirstName = "Jasper", LastName="Kyd", Occupation = Occupation.MusicComposer, Active = true, Age = 20 }
             }
-
         };
-        public UsersCollection GetUsers()
+        public UsersCollection GetActiveUsers()
+        {
+            UsersCollection ActiveUsers = new UsersCollection {Users = new List<User>() };
+            foreach(User u in Users.Users)
+            {
+                if (u.Active == true)
+                {
+                    User activeUser = u;
+                    ActiveUsers.Users.Add(activeUser);
+                }
+            }  
+            return ActiveUsers;
+        }
+        public UsersCollection GetAllUsers()
         {
             return Users;
         }
