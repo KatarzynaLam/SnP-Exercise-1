@@ -8,6 +8,6 @@
     }
     public class UsersCollection
     {
-        public User?[] Users { get; set; }
+        public List<User> Users { get; set; }
     }
 }
