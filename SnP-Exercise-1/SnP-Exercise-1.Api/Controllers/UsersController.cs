@@ -5,7 +5,7 @@ using System;
 namespace SnP_Exercise_1.Api.Controllers
 {
     [ApiController]
-    [Route("v1/users")]
+    [Route("v1/[controller]")]
     public class UsersController : ControllerBase
     {
         private UserService? _userService;
@@ -26,6 +26,18 @@ namespace SnP_Exercise_1.Api.Controllers
         {
             return MapToUsersDTO(_userService.GetActiveUsers());
         }
+
+        [Route("names/{name}")]
+        [HttpGet]
+        public UsersCollection GetUsersByName(string name)
+        {
+            return MapToUsersDTO(_userService.GetUsersByName(name));
+        }
+        //[Route("{Occupation:Occupation}")]
+        //public UsersCollection GetUsersByOccupation(Occupation occupation)
+        //{
+
+        //}
 
         private User MapToUserDTO(SnP_Exercise_1.Services.User user)
         {

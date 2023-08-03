@@ -17,6 +17,23 @@ namespace SnP_Exercise_1.Services
                 new User { FirstName = "Jasper", LastName="Kyd", Occupation = Occupation.MusicComposer, Active = true, Age = 20 }
             }
         };
+
+        public UsersCollection GetUsersByName(string name)
+        {
+            UsersCollection usersByName = new UsersCollection { };
+            string FirstName= name.Split(' ')[0];
+            string LastName= name.Split(' ')[1];
+            usersByName.Users = Users.Users.Where(user => (user.FirstName == FirstName) && user.LastName == LastName).ToList();
+            return usersByName;
+        }
+      
+        //public UsersCollection GetUsersByOccupation(Occupation occupation)
+        //{
+
+        //}
+
+
+
         public UsersCollection GetActiveUsers()
         {
             UsersCollection ActiveUsers = new UsersCollection {Users = new List<User>() };
