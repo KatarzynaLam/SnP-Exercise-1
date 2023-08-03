@@ -16,7 +16,7 @@ namespace SnP_Exercise_1.Services
             {
                 new User { FirstName = "Bill", LastName="Gates", Occupation = Occupation.CEO, Active = true, Age = 100 },
                 new User { FirstName = "Issac", LastName="Newton", Occupation = Occupation.Scientist, Active = false, Age = 10 },
-                new User { FirstName = "Jasper", LastName="Kyd", Occupation = Occupation.MusicComposer, Active = true, Age = 20 }
+                new User { FirstName = "Jasper", LastName="Kyd", Occupation = Occupation.MusicComposer, Active = true, Age = 10 }
             }
         };
 
@@ -33,8 +33,12 @@ namespace SnP_Exercise_1.Services
             OccupationUsers.Users = Users.Users.Where(user => (user.Occupation.GetDisplayName() == occupation)).ToList();
             return OccupationUsers;
         }
-
-
+        public UsersCollection GetUsersByAge(int age)
+        {
+            UsersCollection UsersByAge = new UsersCollection { Users = new List<User>() };
+            UsersByAge.Users = Users.Users.Where(user => (user.Age == age)).ToList();
+            return UsersByAge;
+        }
 
         public UsersCollection GetActiveUsers()
         {

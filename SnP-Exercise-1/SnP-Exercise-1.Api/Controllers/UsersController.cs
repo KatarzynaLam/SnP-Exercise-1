@@ -33,11 +33,19 @@ namespace SnP_Exercise_1.Api.Controllers
         {
             return MapToUsersDTO(_userService.GetUsersByName(name));
         }
+
         [Route("occupation/{occupation}")]
         [HttpGet]
         public UsersCollection GetUsersByOccupation(string occupation)
         {
             return MapToUsersDTO(_userService.GetUsersByOccupation(occupation));
+        }
+
+        [Route("age/{age}")]
+        [HttpGet]
+        public UsersCollection GetUsersByAge(int age)
+        {
+            return MapToUsersDTO(_userService.GetUsersByAge(age));
         }
 
         private User MapToUserDTO(SnP_Exercise_1.Services.User user)
