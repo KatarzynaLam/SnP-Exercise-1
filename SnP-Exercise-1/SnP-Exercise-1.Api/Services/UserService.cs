@@ -23,9 +23,7 @@ namespace SnP_Exercise_1.Services
         public UsersCollection GetUsersByName(string name)
         {
             UsersCollection UsersByName = new UsersCollection { };
-            string FirstName= name.Split(' ')[0];
-            string LastName= name.Split(' ')[1];
-            UsersByName.Users = Users.Users.Where(user => (user.FirstName == FirstName) && user.LastName == LastName).ToList();
+            UsersByName.Users = Users.Users.Where(user => (user.FirstName + ' ' + user.LastName) == name).ToList();
             return UsersByName;
         }
 
