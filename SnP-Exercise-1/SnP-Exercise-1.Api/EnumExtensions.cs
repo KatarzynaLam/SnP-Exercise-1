@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace SnP_Exercise_1.Api
+namespace SnP_Exercise_1
 {
     public static class EnumExtensions
     {

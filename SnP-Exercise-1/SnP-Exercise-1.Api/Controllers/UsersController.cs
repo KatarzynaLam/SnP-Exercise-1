@@ -27,17 +27,18 @@ namespace SnP_Exercise_1.Api.Controllers
             return MapToUsersDTO(_userService.GetActiveUsers());
         }
 
-        [Route("names/{name}")]
+        [Route("name/{name}")]
         [HttpGet]
         public UsersCollection GetUsersByName(string name)
         {
             return MapToUsersDTO(_userService.GetUsersByName(name));
         }
-        //[Route("{Occupation:Occupation}")]
-        //public UsersCollection GetUsersByOccupation(Occupation occupation)
-        //{
-
-        //}
+        [Route("occupation/{occupation}")]
+        [HttpGet]
+        public UsersCollection GetUsersByOccupation(string occupation)
+        {
+            return MapToUsersDTO(_userService.GetUsersByOccupation(occupation));
+        }
 
         private User MapToUserDTO(SnP_Exercise_1.Services.User user)
         {

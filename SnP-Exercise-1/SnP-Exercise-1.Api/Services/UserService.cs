@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 using System.ComponentModel;
+using Microsoft.OpenApi.Extensions;
+using SnP_Exercise_1.Api;
 
 namespace SnP_Exercise_1.Services
 {
@@ -20,17 +22,19 @@ namespace SnP_Exercise_1.Services
 
         public UsersCollection GetUsersByName(string name)
         {
-            UsersCollection usersByName = new UsersCollection { };
+            UsersCollection UsersByName = new UsersCollection { };
             string FirstName= name.Split(' ')[0];
             string LastName= name.Split(' ')[1];
-            usersByName.Users = Users.Users.Where(user => (user.FirstName == FirstName) && user.LastName == LastName).ToList();
-            return usersByName;
+            UsersByName.Users = Users.Users.Where(user => (user.FirstName == FirstName) && user.LastName == LastName).ToList();
+            return UsersByName;
         }
 
-        //public UsersCollection GetUsersByOccupation(Occupation occupation)
-        //{
-
-        //}
+        public UsersCollection GetUsersByOccupation(string occupation)
+        {
+            UsersCollection OccupationUsers = new UsersCollection { Users = new List<User>() };
+            OccupationUsers.Users = Users.Users.Where(user => (user.Occupation.GetDisplayName() == occupation)).ToList();
+            return OccupationUsers;
+        }
 
 
 
