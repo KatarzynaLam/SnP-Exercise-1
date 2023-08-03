@@ -1,3 +1,5 @@
+using SnP_Exercise_1.Services;
+
 namespace SnP_Exercise_1.Api
 {
     public class Program
@@ -12,7 +14,7 @@ namespace SnP_Exercise_1.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddScoped<UserService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
