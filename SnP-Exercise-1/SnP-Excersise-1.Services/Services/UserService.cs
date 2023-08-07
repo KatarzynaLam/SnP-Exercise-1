@@ -2,8 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 using System.ComponentModel;
-using Microsoft.OpenApi.Extensions;
-using SnP_Exercise_1.Api;
 
 namespace SnP_Exercise_1.Services
 {
