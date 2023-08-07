@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace SnP_Exercise_1.Services
 {
 
-    public class UserService
+    public class UserService: IUserService
     {
         private static readonly UsersCollection Users = new UsersCollection
         {
