@@ -8,8 +8,8 @@ namespace SnP_Exercise_1.Api.Controllers
     [Route("v1/[controller]")]
     public class UsersController : ControllerBase
     {
-        private UserService? _userService;
-        public UsersController(UserService userService)
+        private readonly IUserService _userService;
+        public UsersController(IUserService userService)
         {
             _userService = userService;
         }
