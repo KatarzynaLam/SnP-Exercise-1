@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace SnP_Exercise_1.Services
 {
 
-    public class UserService: IUserService
+    public class UserService : IUserService
     {
         private static readonly UsersCollection Users = new UsersCollection
         {
@@ -20,8 +20,9 @@ namespace SnP_Exercise_1.Services
 
         public UsersCollection GetFilteredUsers(string? firstname, string? lastname, string? occupation, int? age, bool? active)
         {
-            return new UsersCollection {
-                Users = Users.Users.Where(user => 
+            return new UsersCollection
+            {
+                Users = Users.Users.Where(user =>
                 (user.FirstName == firstname || firstname == null)
                 && (user.LastName == lastname || lastname == null)
                 && (user.Age == age || age == null)
@@ -30,18 +31,18 @@ namespace SnP_Exercise_1.Services
                 ).ToList()
             };
         }
-        
+
         public UsersCollection GetActiveUsers()
         {
-            UsersCollection ActiveUsers = new UsersCollection {Users = new List<User>() };
-            foreach(User u in Users.Users)
+            UsersCollection ActiveUsers = new UsersCollection { Users = new List<User>() };
+            foreach (User u in Users.Users)
             {
                 if (u.Active == true)
                 {
                     User activeUser = u;
                     ActiveUsers.Users.Add(activeUser);
                 }
-            }  
+            }
             return ActiveUsers;
         }
         public UsersCollection GetAllUsers()

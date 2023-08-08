@@ -1,5 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SnP_Exercise_1.Services
 {
@@ -7,7 +6,7 @@ namespace SnP_Exercise_1.Services
     {
         CEO,
         Scientist,
-        [Display(Name ="Music Composer")]
+        [Display(Name = "Music Composer")]
         MusicComposer,
     }
     public class UsersCollection

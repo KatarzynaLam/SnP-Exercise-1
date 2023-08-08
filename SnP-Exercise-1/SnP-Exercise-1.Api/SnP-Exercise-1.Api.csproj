@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SnP-Excersise-1.Services\SnP-Exercise-1.Services.csproj" />
+    <ProjectReference Include="..\SnP-Exercise-1.Services\SnP-Exercise-1.Services.csproj" />
   </ItemGroup>
 
 </Project>
